@@ -1,0 +1,24 @@
+# Підключаємо рекомендовані правила пакета lints
+include: package:lints/recommended.yaml
+
+analyzer:
+  # Виключаємо збіркові та згенеровані файли
+  exclude:
+    - build/**
+    - lib/src/**/*.g.dart
+  # Плагіни для аналізу (наприклад, custom_lint для riverpod_lint)
+  plugins:
+    - custom_lint
+  errors:
+    invalid_annotation_target: ignore
+
+# Налаштування лінтерів – окремий розділ на тому ж рівні, що й analyzer
+linter:
+  rules:
+    # Вимагати явного вказання типу повернення функцій
+    - always_declare_return_types
+
+# Налаштування плагіну custom_lint
+custom_lint:
+  rules:
+    missing_provider_scope: false
